@@ -31,4 +31,16 @@ describe("Default test", () => {
     expect(inventory.project(yesterday)).toEqual(["apple", "banana"])
     expect(inventory.project(today)).toEqual(["apple", "banana", "orange"])
   })
+
+  it("should add apple and banana for yesterday, and orange for today, and kiwi tomorrow", () => {
+    const inventory = new Inventory()
+    inventory.add(tomorrow, "kiwi")
+    inventory.add(yesterday, "apple")
+    inventory.add(yesterday, "banana")
+    inventory.add(today, "orange")
+
+    expect(inventory.project(yesterday)).toEqual(["apple", "banana"])
+    expect(inventory.project(today)).toEqual(["apple", "banana", "orange"])
+    expect(inventory.project(tomorrow)).toEqual(["apple", "banana", "orange", "kiwi"])
+  })
 })
