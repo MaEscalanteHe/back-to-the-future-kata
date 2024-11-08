@@ -7,6 +7,11 @@ export class Inventory {
   }
 
   project(date: Date) {
-    return this.storage.get(date)
+    const inventory = [...this.storage.entries()].sort(([a], [b]) => a.getTime() - b.getTime())
+    const result = inventory.reduce((acc: any, [d, products]) => {
+      date >= d && acc.push(...products)
+      return acc
+    }, [])
+    return result
   }
 }
