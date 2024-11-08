@@ -2,10 +2,11 @@ export class Inventory {
   constructor(private storage: Map<Date, string[]> = new Map()) {}
 
   add(date: Date, product: string) {
-    return false
+    const products = this.storage.get(date) || []
+    this.storage.set(date, [...products, product])
   }
 
   project(date: Date) {
-    return ["apple"]
+    return this.storage.get(date)
   }
 }
