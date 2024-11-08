@@ -43,4 +43,14 @@ describe("Default test", () => {
     expect(inventory.project(today)).toEqual(["apple", "banana", "orange"])
     expect(inventory.project(tomorrow)).toEqual(["apple", "banana", "orange", "kiwi"])
   })
+
+  it("should remove apple from today", () => {
+    const inventory = new Inventory()
+    inventory.add(yesterday, "kiwi")
+    inventory.add(yesterday, "apple")
+    inventory.add(yesterday, "banana")
+    inventory.remove(today, "apple")
+
+    expect(inventory.project(today)).toEqual(["kiwi", "banana"])
+  })
 })

@@ -14,4 +14,8 @@ export class Inventory {
     }, [])
     return result
   }
+
+  remove(date, product: string) {
+    return
+  }
 }
