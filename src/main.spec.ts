@@ -13,4 +13,12 @@ describe("Default test", () => {
 
     expect(inventory.project(yesterday)).toEqual(["apple"])
   })
+
+  it("should add apple and banana", () => {
+    const inventory = new Inventory()
+    inventory.add(yesterday, "apple")
+    inventory.add(yesterday, "banana")
+
+    expect(inventory.project(yesterday)).toEqual(["apple", "banana"])
+  })
 })
